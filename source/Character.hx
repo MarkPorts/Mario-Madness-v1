@@ -7,7 +7,7 @@ import flixel.graphics.frames.FlxAtlasFrames;
 import flixel.tweens.FlxTween;
 import flixel.util.FlxSort;
 import Section.SwagSection;
-#if MODS_ALLOWED
+#if sys
 import sys.io.File;
 import sys.FileSystem;
 #end
@@ -94,7 +94,7 @@ class Character extends FlxSprite
 
 			default:
 				var characterPath:String = 'characters/' + curCharacter + '.json';
-				#if MODS_ALLOWED
+				#if desktop
 				var path:String = Paths.modFolders(characterPath);
 				if (!FileSystem.exists(path)) {
 					path = Paths.getPreloadPath(characterPath);
@@ -109,7 +109,7 @@ class Character extends FlxSprite
 					path = Paths.getPreloadPath('characters/' + DEFAULT_CHARACTER + '.json'); //If a character couldn't be found, change him to BF just to prevent a crash
 				}
 
-				#if MODS_ALLOWED
+				#if desktop
 				var rawJson = File.getContent(path);
 				#else
 				var rawJson = Assets.getText(path);
