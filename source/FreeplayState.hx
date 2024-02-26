@@ -47,7 +47,7 @@ class FreeplayState extends MusicBeatState
 
 	override function create()
 	{
-		#if MODS_ALLOWED
+		#if sys
 		Paths.destroyLoadedImages();
 		#end
 		WeekData.reloadWeekFiles(false);
