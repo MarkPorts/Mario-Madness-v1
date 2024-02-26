@@ -126,6 +126,11 @@ class PauseSubState extends MusicBeatSubstate
 		changeSelection();
 
 		cameras = [FlxG.cameras.list[FlxG.cameras.list.length - 1]];
+		
+		#if android
+                addVirtualPad(UP_DOWN, A);
+                addPadCamera();
+                #end
 	}
 
 	override function update(elapsed:Float)
@@ -187,6 +192,10 @@ class PauseSubState extends MusicBeatSubstate
 					PlayState.deathCounter = 0;
 					PlayState.seenCutscene = false;
 					CustomFadeTransition.nextCamera = transCamera;
+					FlxG.updateFramerate = PlayState.fpsthing;
+					FlxG.drawFramerate = PlayState.fpsthing; 
+					ClientPrefs.framerate = PlayState.fpsthing;
+					ClientPrefs.saveSettings();
 					if(PlayState.isStoryMode) {
 						MusicBeatState.switchState(new StoryMenuState());
 					} else if (PlayState.isWarp) {
@@ -254,4 +263,4 @@ class PauseSubState extends MusicBeatSubstate
 		curSelected = 0;
 		changeSelection();
 	}
-}
+			}
