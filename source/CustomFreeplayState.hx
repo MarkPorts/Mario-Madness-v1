@@ -69,6 +69,10 @@ class CustomFreeplayState extends MusicBeatState
 
 	override function create()
 	{
+		FlxG.updateFramerate = PlayState.fpsthing;
+		FlxG.drawFramerate = PlayState.fpsthing; 
+		ClientPrefs.framerate = PlayState.fpsthing;
+		
 		#if desktop
 		// Updating Discord Rich Presence
 		DiscordClient.changePresence("In Freeplay", null);
@@ -156,6 +160,11 @@ class CustomFreeplayState extends MusicBeatState
 		add(descText);
 
 		changeSelection();
+		
+		#if android
+                addVirtualPad(LEFT_RIGHT, A_B);
+                #end
+		
 		super.create();
 	}
 
