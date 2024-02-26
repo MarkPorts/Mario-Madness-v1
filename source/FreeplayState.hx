@@ -47,7 +47,7 @@ class FreeplayState extends MusicBeatState
 
 	override function create()
 	{
-		#if sys
+		#if MODS_ALLOWED
 		Paths.destroyLoadedImages();
 		#end
 		WeekData.reloadWeekFiles(false);
@@ -167,6 +167,12 @@ class FreeplayState extends MusicBeatState
 		text.setFormat(Paths.font("vcr.ttf"), 18, FlxColor.WHITE, RIGHT);
 		text.scrollFactor.set();
 		add(text);
+		
+		#if android
+                addVirtualPad(LEFT_RIGHT, A_B);
+                addPadCamera();
+                #end
+		
 		super.create();
 	}
 
