@@ -61,8 +61,13 @@ class GameOverSubstate extends MusicBeatSubstate
 		camFollowPos = new FlxObject(0, 0, 1, 1);
 		camFollowPos.setPosition(FlxG.camera.scroll.x + (FlxG.camera.width / 2), FlxG.camera.scroll.y + (FlxG.camera.height / 2));
 		add(camFollowPos);
-	}
-
+		
+		#if android
+	addVirtualPad(NONE, A_B);
+	addPadCamera();
+	#end
+	
+        }
 	override function update(elapsed:Float)
 	{
 		super.update(elapsed);
@@ -80,6 +85,10 @@ class GameOverSubstate extends MusicBeatSubstate
 
 		if (controls.BACK)
 		{
+			FlxG.updateFramerate = PlayState.fpsthing;
+			FlxG.drawFramerate = PlayState.fpsthing; 
+			ClientPrefs.framerate = PlayState.fpsthing;
+			ClientPrefs.saveSettings();
 			FlxG.sound.music.stop();
 			PlayState.deathCounter = 0;
 			PlayState.seenCutscene = false;
