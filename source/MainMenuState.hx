@@ -171,6 +171,8 @@ class MainMenuState extends MusicBeatState
 
 		changeItem();
 
+		PlayState.fpsthing = ClientPrefs.framerate;
+
 		#if ACHIEVEMENTS_ALLOWED
 		Achievements.loadAchievements();
 		var leDate = Date.now();
@@ -180,7 +182,11 @@ class MainMenuState extends MusicBeatState
 			ClientPrefs.saveSettings();
 		}
 		#end
+#if android
 
+		addVirtualPad(UP_DOWN, A_B_C);	
+
+                #end
 		super.create();
 	}
 
@@ -352,7 +358,7 @@ class MainMenuState extends MusicBeatState
 
 		if(!smOpen)
 			{
-			 if (FlxG.keys.justPressed.B)
+			 if (FlxG.keys.justPressed.B  || virtualPad.buttonC.justPressed)
 				{
 				smOpen = true;
 				FlxG.sound.play(Paths.sound('abrirsm'));
