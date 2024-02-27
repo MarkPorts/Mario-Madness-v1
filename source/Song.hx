@@ -7,7 +7,7 @@ import lime.utils.Assets;
 
 using StringTools;
 
-#if sys
+#if windows
 import sys.FileSystem;
 import sys.io.File;
 #end
@@ -57,7 +57,7 @@ class Song
 
 		var formattedFolder:String = 'songData/' + Paths.formatToSongPath(folder);
 		var formattedSong:String = Paths.formatToSongPath(jsonInput);
-		#if MODS_ALLOWED
+		#if windows
 		var moddyFile:String = Paths.modsJson(formattedFolder + '/' + formattedSong);
 		if (FileSystem.exists(moddyFile))
 		{
