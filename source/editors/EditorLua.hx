@@ -22,12 +22,6 @@ import flixel.tweens.FlxTween;
 import flixel.util.FlxColor;
 import flixel.util.FlxTimer;
 
-using StringTools;
-#if sys
-import sys.FileSystem;
-import sys.io.File;
-#end
-
 class EditorLua {
 	public static var Function_Stop = 1;
 	public static var Function_Continue = 0;
