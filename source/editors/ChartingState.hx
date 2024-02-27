@@ -43,13 +43,6 @@ import openfl.net.FileReference;
 import openfl.utils.Assets as OpenFlAssets;
 import openfl.utils.ByteArray;
 
-using StringTools;
-#if MODS_ALLOWED
-import flash.media.Sound;
-import sys.FileSystem;
-import sys.io.File;
-#end
-
 
 class ChartingState extends MusicBeatState
 {
